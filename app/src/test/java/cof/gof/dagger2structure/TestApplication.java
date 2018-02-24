@@ -5,10 +5,11 @@ import android.app.Application;
 
 import javax.inject.Inject;
 
+import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
-import dagger.android.HasDispatchingActivityInjector;
+import dagger.android.HasActivityInjector;
 
-public class TestApplication extends Application implements HasDispatchingActivityInjector {
+public class TestApplication extends Application implements HasActivityInjector {
     @Inject
     DispatchingAndroidInjector<Activity> dispatchingActivityInjector;
 
@@ -20,7 +21,7 @@ public class TestApplication extends Application implements HasDispatchingActivi
     }
 
     @Override
-    public DispatchingAndroidInjector<Activity> activityInjector() {
+    public AndroidInjector<Activity> activityInjector() {
         return dispatchingActivityInjector;
     }
 }

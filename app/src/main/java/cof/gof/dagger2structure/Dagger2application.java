@@ -5,21 +5,22 @@ import android.app.Application;
 
 import javax.inject.Inject;
 
+import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
-import dagger.android.HasDispatchingActivityInjector;
+import dagger.android.HasActivityInjector;
 
-public class Dagger2application extends Application implements HasDispatchingActivityInjector {
+public class Dagger2application extends Application implements HasActivityInjector {
     @Inject
     DispatchingAndroidInjector<Activity> dispatchingActivityInjector;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        DaggerMyApplicationComponent.create().inject(this);
+        //DaggerMyApplicationComponent.create().inject(this);
     }
 
     @Override
-    public DispatchingAndroidInjector<Activity> activityInjector() {
+    public AndroidInjector<Activity> activityInjector() {
         return dispatchingActivityInjector;
     }
 }

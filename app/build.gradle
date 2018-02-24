@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 
-def DAGGER_VERSION = 2.10
+def DAGGER_VERSION = 2.11
 
 android {
     compileSdkVersion 25
@@ -25,6 +25,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -35,19 +39,23 @@ dependencies {
     })
 
     compile "com.google.dagger:dagger:$DAGGER_VERSION"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$DAGGER_VERSION"
     annotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
     compile "com.google.dagger:dagger-android:$DAGGER_VERSION"
     compile "com.google.dagger:dagger-android-support:$DAGGER_VERSION"
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile "org.projectlombok:lombok:1.16.10"
     compile 'org.mockito:mockito-core:2.7.12'
 
     androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+    testAnnotationProcessor "com.google.dagger:dagger-android-processor:$DAGGER_VERSION"
     testAnnotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
     testCompile 'junit:junit:4.12'
-    testCompile "org.robolectric:robolectric:3.2.2"
+    testCompile "org.robolectric:robolectric:3.6.1"
     testCompile "com.google.dagger:dagger:$DAGGER_VERSION"
+    testCompile "com.google.dagger:dagger-android:$DAGGER_VERSION"
+    testCompile "com.google.dagger:dagger-android-support:$DAGGER_VERSION"
 }
 
 android.applicationVariants.all {
