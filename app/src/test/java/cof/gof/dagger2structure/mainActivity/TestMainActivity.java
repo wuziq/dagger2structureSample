@@ -12,7 +12,7 @@ import cof.gof.dagger2structure.TestApplication;
 
 import static junit.framework.Assert.assertEquals;
 
-@Config(constants = BuildConfig.class, sdk = 21, application = TestApplication.class)
+@Config(application = TestApplication.class)
 @RunWith(RobolectricTestRunner.class)
 public class TestMainActivity {
 
